@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1709142444 source:c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_common.c
+	"pb_common.h"
+
+1709142444 c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_common.h
+	"pb.h"
+
+1709142444 c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb.h
+	<stdint.h>
+	<stddef.h>
+	<stdbool.h>
+	<string.h>
+	<limits.h>
+	<stdlib.h>
+	<avr/pgmspace.h>
+
+1709142444 source:c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_decode.c
+	"pb.h"
+	"pb_decode.h"
+	"pb_common.h"
+
+1709142444 c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_decode.h
+	"pb.h"
+
+1709142444 source:c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_encode.c
+	"pb.h"
+	"pb_encode.h"
+	"pb_common.h"
+
+1709142444 c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\pb_encode.h
+	"pb.h"
+
+1709204715 source:c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\stm32_led.pb.c
+	"STM32_led.pb.h"
+
+1709205958 c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\stm32_led.pb.h
+	"pb.h"
+
+1709206295 source:c:\users\soma\onedrive\villamosmérnök\projektek\pcb_design_project\test\c_app\protobuf_led\main.c
+	<stdio.h>
+	"pb_encode.h"
+	"pb_decode.h"
+	"STM32_led.pb.h"
+
