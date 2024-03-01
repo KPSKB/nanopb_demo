@@ -22,6 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "pb_decode.h"
+#include "STM32_led.pb.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,6 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+#define LED_STATE_MSG_LENGTH ( (size_t) 2 )
 
 /* USER CODE END PD */
 
@@ -69,6 +74,12 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
+  // Buffer to receive messages
+  uint8_t buffer[2] = {0};
+
+  bool pb_decode_status;
+  HAL_StatusTypeDef uart_status;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -102,6 +113,61 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	// Wait for and receive 2 bytes UART data.
+	uart_status = HAL_UART_Receive(&huart3, buffer, 2, 5000);
+
+	// Successfully received 2 bytes.
+	if ( uart_status == HAL_OK )
+	{
+
+		// Set yellow led to signal data transaction to the user.
+		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+
+		// Allocate space for the decoded message.
+		ChangeLedStateMsg message = ChangeLedStateMsg_init_zero;
+
+		//Create a stream that reads from the buffer.
+		pb_istream_t stream = pb_istream_from_buffer(buffer, LED_STATE_MSG_LENGTH);
+
+		//Now we are ready to decode the message.
+		pb_decode_status = pb_decode(&stream, ChangeLedStateMsg_fields, &message);
+
+		// Check for errors
+		if ( !pb_decode_status )
+		{
+			// Unused, only for debugging
+			char *errorMessage = stream.errmsg;
+
+			// Set red led to signal error to the user
+			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+		}
+
+		/* Change led state based on protobuf message */
+		if ( message.has_led_state )
+		{
+			if ( message.led_state == 1 )
+			{
+				// Set green led
+				HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
+			}
+			else if ( message.led_state == 0 )
+			{
+				// Reset green led
+				HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
+			}
+		}
+
+		// Reset yellow led
+		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+	}
+	else if ( uart_status == HAL_ERROR )
+	{
+		// Set red led to signal error to the user
+		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+	}
+
   }
   /* USER CODE END 3 */
 }
