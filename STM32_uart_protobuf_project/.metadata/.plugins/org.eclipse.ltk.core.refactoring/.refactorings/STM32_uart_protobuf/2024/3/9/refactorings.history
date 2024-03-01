@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;STM32_uart_protobuf/protobuf/inc&apos; to &apos;Inc&apos;" description="Rename resource &apos;inc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="protobuf/inc" name="Inc" stamp="1709306179397" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;STM32_uart_protobuf/protobuf/src&apos; to &apos;Src&apos;" description="Rename resource &apos;src&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="protobuf/src" name="Src" stamp="1709306185972" updateReferences="true"/>
+</session>
