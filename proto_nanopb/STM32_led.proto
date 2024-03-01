@@ -1,0 +1,8 @@
+// Protocol definition for changing the state of the user LED on STM32 board
+
+syntax = "proto2";
+
+message ChangeLedStateMsg {
+    optional int32 led_state = 1 [default = 2]; // In case of default value, the LED shall keep it's state
+}
+
