@@ -1,9 +1,11 @@
 import STM32_led_pb2 as pb
 import serial
 import serial.tools.list_ports
+import time
+
 
 # Function for change the state of the led "manually" (with command line)
-def switchLedState():
+def switchLedState(ser):
 
     print("Choose from the following commands: 0/1/c : on/off/abort")
 
@@ -18,12 +20,45 @@ def switchLedState():
             ser.write(serialized_on)
             print( "LED on " + "(" + str(serialized_on) +")" )
         elif command == str('c'):
-            print("Close port and exit")
             return
         else:
             print("Invalid command!")
             print("Choose from the following commands: 0/1/c : on/off/abort")
 
+
+# Flood test, blinking LED with a frequency of 1 HZ
+def floodTest(ser):
+
+    period_time_ms = 1000
+
+    for i in range(20):
+
+        start_time_ms = time.time() * 1000
+        current_time_ms = start_time_ms
+
+        print("ON", end =" ", flush=True)
+
+        # Sending "ON" messages as fast as possible for half period
+        while(current_time_ms - start_time_ms < period_time_ms/2):
+            ser.write(serialized_on)
+            current_time_ms = time.time() * 1000
+
+        print("OFF", end =" ", flush=True)
+
+        # Sending "OFF" messages as fast as possible for half period
+        while(current_time_ms - start_time_ms < period_time_ms):
+            ser.write(serialized_off)   
+            current_time_ms = time.time() * 1000
+
+
+
+#*************************************************************************************************************
+# SCRIPT STARTS HERE
+#*************************************************************************************************************
+
+device_found = False
+device_port = None
+ports = None
 
 
 # Encode message for turn LED ON
@@ -39,14 +74,14 @@ serialized_off = message_off.SerializeToString()
 print(serialized_off)
 
 
-# Let the user choose the COM port of the device
-device_found = False
-device_port = 0
+# Get list of comports
 ports = serial.tools.list_ports.comports()
 
+# Print out available COM ports 
 for port, desc, hwid in sorted(ports):
     print("{}: {} [{}]".format(port, desc, hwid))
 
+# Let the user decide, which COM port shall be used
 if len(port) > 0:
     while(True):
         device_to_test = str(input("Which device shall be tested? (COMx or ctrl+c to abort script) "))
@@ -63,15 +98,15 @@ if len(port) > 0:
 # Open the selected COM port
 ser = serial.Serial(port, 115200)
 
+
 # TEST STARTS HERE
 
-switchLedState()
+switchLedState(ser)
+floodTest(ser)
 
-#TEST ENDS HERE
+# TEST ENDS HERE
+
 
 # Close COM port
+print("Close port and exit")
 ser.close()
-
-
-
-
