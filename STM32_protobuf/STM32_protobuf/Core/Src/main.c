@@ -48,7 +48,18 @@
 
 UART_HandleTypeDef huart3;
 
+
 /* USER CODE BEGIN PV */
+
+// Buffer to receive messages
+static uint8_t uartBuffer[2] = {0};
+
+static bool pbDecodeStatus;
+
+
+#ifndef PROTOBUF_LED_TIME_CRITICAL
+bool uartMsgReceived;
+#endif
 
 /* USER CODE END PV */
 
@@ -64,6 +75,79 @@ static void MX_USB_OTG_HS_USB_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+bool processProtobufMsg( uint8_t *buffer )
+{
+	// Allocate space for the decoded message.
+	ChangeLedStateMsg message = ChangeLedStateMsg_init_zero;
+
+	//Create a stream that reads from the buffer.
+	pb_istream_t stream = pb_istream_from_buffer(buffer, LED_STATE_MSG_LENGTH);
+
+	//Now we are ready to decode the message.
+	pbDecodeStatus = pb_decode(&stream, ChangeLedStateMsg_fields, &message);
+
+	/* Change led state based on protobuf message */
+	if (message.has_led_state)
+	{
+		if (message.led_state == 1)
+		{
+			// Set green led
+			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
+		}
+		else if (message.led_state == 0)
+		{
+			// Reset green led
+			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
+		}
+	}
+
+	return pbDecodeStatus;
+}
+
+/* Handle UART interrupt */
+void HAL_UART_RxCpltCallback( UART_HandleTypeDef *huart )
+{
+
+#ifdef PROTOBUF_LED_TIME_CRITICAL
+
+	// Set yellow led to signal data processing to the user.
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+
+	if (!processProtobufMsg(uartBuffer))
+	{
+		// Set red led to signal decoding error to the user
+		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+	}
+
+	// Reset yellow led
+	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+#else
+
+	if (uartMsgReceived)
+	{
+		/* Flag not cleared, possible data loss
+		 * Set red led to signal decoding error to the user */
+		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+	}
+	else
+	{
+		// Set flag to process protobuf message
+		uartMsgReceived = true;
+	}
+
+#endif
+
+	// Receive next message
+	HAL_UART_Receive_IT(&huart3, uartBuffer, LED_STATE_MSG_LENGTH);
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+	// Set red led to signal error to the user
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -73,12 +157,6 @@ static void MX_USB_OTG_HS_USB_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
-  // Buffer to receive messages
-  uint8_t buffer[2] = {0};
-
-  bool pb_decode_status;
-  HAL_StatusTypeDef uart_status;
 
   /* USER CODE END 1 */
 
@@ -104,6 +182,9 @@ int main(void)
   MX_USB_OTG_HS_USB_Init();
   /* USER CODE BEGIN 2 */
 
+  // Start UART receive
+  HAL_UART_Receive_IT(&huart3, uartBuffer, LED_STATE_MSG_LENGTH);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,61 +193,27 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-
-	// Wait for and receive 2 bytes UART data.
-	uart_status = HAL_UART_Receive(&huart3, buffer, 2, 5000);
-
-	// Successfully received 2 bytes.
-	if ( uart_status == HAL_OK )
+	// Check if new message received since last cycle
+	if (uartMsgReceived)
 	{
-
-		// Set yellow led to signal data transaction to the user.
+		// Set yellow led to signal data processing to the user.
 		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 
-		// Allocate space for the decoded message.
-		ChangeLedStateMsg message = ChangeLedStateMsg_init_zero;
-
-		//Create a stream that reads from the buffer.
-		pb_istream_t stream = pb_istream_from_buffer(buffer, LED_STATE_MSG_LENGTH);
-
-		//Now we are ready to decode the message.
-		pb_decode_status = pb_decode(&stream, ChangeLedStateMsg_fields, &message);
-
-		// Check for errors
-		if ( !pb_decode_status )
+		// Process protobuf message
+		if (!processProtobufMsg(uartBuffer))
 		{
-			// Unused, only for debugging
-			char *errorMessage = stream.errmsg;
-
-			// Set red led to signal error to the user
+			// Set red led to signal decoding error to the user
 			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
 		}
 
-		/* Change led state based on protobuf message */
-		if ( message.has_led_state )
-		{
-			if ( message.led_state == 1 )
-			{
-				// Set green led
-				HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
-			}
-			else if ( message.led_state == 0 )
-			{
-				// Reset green led
-				HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
-			}
-		}
+		// Reset flag
+		uartMsgReceived = false;
 
 		// Reset yellow led
 		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	}
 
-	}
-	else if ( uart_status == HAL_ERROR )
-	{
-		// Set red led to signal error to the user
-		HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-	}
+    /* USER CODE BEGIN 3 */
 
   }
   /* USER CODE END 3 */

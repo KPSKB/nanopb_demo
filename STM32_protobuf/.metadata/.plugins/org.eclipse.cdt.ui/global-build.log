@@ -1,28 +1,247 @@
-16:56:54 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+18:52:03 **** Incremental Build of configuration Debug for project STM32_protobuf ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:140:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  140 |                         char *errorMessage = stream.errmsg;
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:94:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   94 |                         char *errorMessage = stream.errmsg;
       |                                              ^~~~~~
-../Core/Src/main.c:140:31: warning: unused variable 'errorMessage' [-Wunused-variable]
-  140 |                         char *errorMessage = stream.errmsg;
+../Core/Src/main.c:94:31: warning: unused variable 'errorMessage' [-Wunused-variable]
+   94 |                         char *errorMessage = stream.errmsg;
       |                               ^~~~~~~~~~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
 arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STM32_protobuf.elf
  
 arm-none-eabi-size  STM32_protobuf.elf 
 arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
    text	   data	    bss	    dec	    hex	filename
-  30864	     24	   1720	  32608	   7f60	STM32_protobuf.elf
+  26368	     24	   1720	  28112	   6dd0	STM32_protobuf.elf
 Finished building: default.size.stdout
  
 Finished building: STM32_protobuf.list
  
-16:57:14 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+18:52:07 **** Incremental Build of configuration Debug for project STM32_protobuf ****
 make -j8 all 
 arm-none-eabi-size  STM32_protobuf.elf 
    text	   data	    bss	    dec	    hex	filename
-  30864	     24	   1720	  32608	   7f60	STM32_protobuf.elf
+  26368	     24	   1720	  28112	   6dd0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+18:54:24 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:92:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   92 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:92:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   92 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  26368	     24	   1720	  28112	   6dd0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+18:58:29 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-size  STM32_protobuf.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26368	     24	   1720	  28112	   6dd0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+18:59:27 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:92:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   92 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:92:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   92 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38860	     24	   1720	  40604	   9e9c	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+19:12:06 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32h7xx.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32h7xx.d" -MT"Core/Src/system_stm32h7xx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32h7xx.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:97:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:97:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+../Core/Src/main.c:78:18: warning: variable 'diff' set but not used [-Wunused-but-set-variable]
+   78 |         uint32_t diff;
+      |                  ^~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38880	     24	   1720	  40624	   9eb0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+19:20:21 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:97:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:97:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+../Core/Src/main.c:78:18: warning: variable 'diff' set but not used [-Wunused-but-set-variable]
+   78 |         uint32_t diff;
+      |                  ^~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38884	     24	   1720	  40628	   9eb4	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+19:22:25 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:97:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:97:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+../Core/Src/main.c:78:18: warning: variable 'diff' set but not used [-Wunused-but-set-variable]
+   78 |         uint32_t diff;
+      |                  ^~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38884	     24	   1720	  40628	   9eb4	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+20:01:09 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-size  STM32_protobuf.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38884	     24	   1720	  40628	   9eb4	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+08:54:19 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:97:38: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                                      ^~~~~~
+../Core/Src/main.c:97:23: warning: unused variable 'errorMessage' [-Wunused-variable]
+   97 |                 char *errorMessage = stream.errmsg;
+      |                       ^~~~~~~~~~~~
+../Core/Src/main.c:78:18: warning: variable 'diff' set but not used [-Wunused-but-set-variable]
+   78 |         uint32_t diff;
+      |                  ^~~~
+At top level:
+../Core/Src/main.c:55:26: warning: 'uart_status' defined but not used [-Wunused-variable]
+   55 | static HAL_StatusTypeDef uart_status;
+      |                          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38896	     24	   1720	  40640	   9ec0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+11:27:50 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:58:26: warning: 'uartStatus' defined but not used [-Wunused-variable]
+   58 | static HAL_StatusTypeDef uartStatus;
+      |                          ^~~~~~~~~~
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38896	     24	   1720	  40640	   9ec0	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+11:41:37 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
+arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
+   text	   data	    bss	    dec	    hex	filename
+  38952	     24	   1720	  40696	   9ef8	STM32_protobuf.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_protobuf.list
+ 
+11:42:28 **** Incremental Build of configuration Debug for project STM32_protobuf ****
+make -j8 all 
+arm-none-eabi-size  STM32_protobuf.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38952	     24	   1720	  40696	   9ef8	STM32_protobuf.elf
 Finished building: default.size.stdout
  

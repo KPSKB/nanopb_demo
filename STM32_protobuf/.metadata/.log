@@ -16,3 +16,33 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-03-01 16:48:36.069
 !MESSAGE Indexed 'STM32_protobuf' (26 sources, 87 headers) in 6.72 sec: 8,327 declarations; 63,753 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0028%)
+!SESSION 2024-03-02 08:39:39.109 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=hu_HU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-02 08:39:55.630
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-02 08:39:55.635
+!MESSAGE Log4j2 initialized with config file C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-02 08:40:04.807
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-03-02 10:45:42.579 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=hu_HU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-02 10:45:53.809
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-02 10:45:53.812
+!MESSAGE Log4j2 initialized with config file C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-02 10:46:01.133
+!MESSAGE Started RMI Server, listening on port 41337
