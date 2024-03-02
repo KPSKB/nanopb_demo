@@ -22,8 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "pb_decode.h"
-#include "STM32_led.pb.h"
+#include "stdbool.h"
+#include "process_protobuf.h"
 
 /* USER CODE END Includes */
 
@@ -34,8 +34,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
-#define LED_STATE_MSG_LENGTH ( (size_t) 2 )
 
 /* USER CODE END PD */
 
@@ -54,9 +52,7 @@ UART_HandleTypeDef huart3;
 // Buffer to receive messages
 static uint8_t uartBuffer[2] = {0};
 
-static bool pbDecodeStatus;
-
-
+// Message received flag
 #ifndef PROTOBUF_LED_TIME_CRITICAL
 bool uartMsgReceived;
 #endif
@@ -74,35 +70,6 @@ static void MX_USB_OTG_HS_USB_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-bool processProtobufMsg( uint8_t *buffer )
-{
-	// Allocate space for the decoded message.
-	ChangeLedStateMsg message = ChangeLedStateMsg_init_zero;
-
-	//Create a stream that reads from the buffer.
-	pb_istream_t stream = pb_istream_from_buffer(buffer, LED_STATE_MSG_LENGTH);
-
-	//Now we are ready to decode the message.
-	pbDecodeStatus = pb_decode(&stream, ChangeLedStateMsg_fields, &message);
-
-	/* Change led state based on protobuf message */
-	if (message.has_led_state)
-	{
-		if (message.led_state == 1)
-		{
-			// Set green led
-			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
-		}
-		else if (message.led_state == 0)
-		{
-			// Reset green led
-			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
-		}
-	}
-
-	return pbDecodeStatus;
-}
 
 /* Handle UART interrupt */
 void HAL_UART_RxCpltCallback( UART_HandleTypeDef *huart )
@@ -193,6 +160,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+#ifndef PROTOBUF_LED_TIME_CRITICAL
 	// Check if new message received since last cycle
 	if (uartMsgReceived)
 	{
@@ -212,6 +180,7 @@ int main(void)
 		// Reset yellow led
 		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 	}
+#endif
 
     /* USER CODE BEGIN 3 */
 
