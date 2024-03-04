@@ -20,10 +20,10 @@ The requirements were as follows:
 - **./test/c_app/**: This directory contains a console application to pre-test protobuf source files.
 - **./proto_nanopb**: This directory contains the proto file and the generated protobuf source files.
 
-## Prerequisites
+## Prerequisites for "Getting started"
 
-- **STM32CubeIDE**: Make sure you have STM32CubeIDE installed to open and modify the STM32CubeIDE project.
-- **Python**: Ensure you have Python installed to run the Python test script.
+- **STM32CubeIDE**: To open and modify the STM32CubeIDE project.
+- **Python**: To run the Python test script.
 - **Python Packages**: Install the required Python packages using the following commands:
     ```
     pip install protobuf
@@ -40,8 +40,7 @@ The requirements were as follows:
 2. **STM32CubeIDE Project**:
     - Open STM32CubeIDE.
     - Navigate to File -> Open Project from File System and select the `./STM32_protobuf/` directory.
-	- Make sure to select the appropriate target MCU for your board when creating the project.
-	- Build and Flash the Project.
+	- Build and Flash the Project. The following preprocessor symbol should be used: `PROTOBUF_LED_TIME_CRITICAL`.
 
 3. **Python Test Script**:
     - Navigate to the `./test/script/` directory.

@@ -5,7 +5,7 @@ import time
 import datetime
 
 
-# Function for change the state of the led "manually" (with command line)
+# Function to change the state of the led "manually" (with command line)
 def switchLedState(ser):
 
     print("\nBasic functionality test. Choose from the following commands: 0/1/c : on/off/continue to flood test")
@@ -65,13 +65,13 @@ ports = None
 
 print("STM32-PC proto test. " + str(datetime.datetime.now()))
 
-# Encode message for turn LED ON
+# Encode message to turn LED ON
 message_on = pb.ChangeLedStateMsg()
 message_on.led_state = 1
 serialized_on = message_on.SerializeToString()
 print("Led ON command decoded as: " + str(serialized_on))
 
-# Encode message for turn LED OFF
+# Encode message to turn LED OFF
 message_off = pb.ChangeLedStateMsg()
 message_off.led_state = 0
 serialized_off = message_off.SerializeToString()

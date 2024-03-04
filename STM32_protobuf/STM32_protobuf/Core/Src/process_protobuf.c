@@ -28,7 +28,7 @@ static bool pbDecodeStatus;
   * @brief 			Decode protobuf message and change the state of the green
   * 				user led accordingly.
   * @param buffer   Pointer to data buffer, which contains the coded message.
-  * @retval 		If decode protobuf was successful.
+  * @retval 		If decoding protobuf was successful.
   */
 bool processProtobufMsg( uint8_t *buffer )
 {
