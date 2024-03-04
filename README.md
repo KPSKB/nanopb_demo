@@ -51,7 +51,7 @@ The requirements were as follows:
 	- The Python script will guide you through the process and provide instructions as needed.
 	
 4. **LED States**:
-    - Green LED: This can be changed using the proto messages.
+    - Green LED: This can be changed using the proto messages. During flood test, it should blink with a frequency of 1 Hz.
     - Yellow LED: Signals that data processing is ongoing.
     - Red LED: Signals possible data loss or error in protobuf decoding.
 	

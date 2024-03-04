@@ -1100,7 +1100,7 @@ __STATIC_FORCEINLINE void __disable_irq(void)
 08000a64 <processProtobufMsg>:
   * 				user led accordingly.
   * @param buffer   Pointer to data buffer, which contains the coded message.
-  * @retval 		If decode protobuf was successful.
+  * @retval 		If decoding protobuf was successful.
   */
 bool processProtobufMsg( uint8_t *buffer )
 {

@@ -1,10 +1,17 @@
-21:16:43 **** Incremental Build of configuration Release for project STM32_protobuf ****
+21:53:29 **** Incremental Build of configuration Debug for project STM32_protobuf ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/process_protobuf.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DPROTOBUF_LED_TIME_CRITICAL -DUSE_HAL_DRIVER -DSTM32H7A3xxQ -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Soma/OneDrive/Villamosmernok/Projektek/PCB_design_project/pcb-design-project/STM32_protobuf/STM32_protobuf/protobuf/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/process_protobuf.d" -MT"Core/Src/process_protobuf.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/process_protobuf.o"
+arm-none-eabi-gcc -o "STM32_protobuf.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\STM32_protobuf\STM32H7A3ZITXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_protobuf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_protobuf.elf
+ 
 arm-none-eabi-size  STM32_protobuf.elf 
+arm-none-eabi-objdump -h -S STM32_protobuf.elf  > "STM32_protobuf.list"
    text	   data	    bss	    dec	    hex	filename
-  19784	     24	   1720	  21528	   5418	STM32_protobuf.elf
+  38904	     24	   1720	  40648	   9ec8	STM32_protobuf.elf
 Finished building: default.size.stdout
  
+Finished building: STM32_protobuf.list
+ 
 
-21:16:44 Build Finished. 0 errors, 0 warnings. (took 585ms)
+21:53:31 Build Finished. 0 errors, 0 warnings. (took 2s.66ms)
 
