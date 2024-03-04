@@ -3,7 +3,6 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
 
-PS C:\Users\Soma\OneDrive\Villamosmérnök\Projektek\PCB_design_project\nanopb-0.4.8-windows-x86\nanopb-0.4.8-windows-x86\generator-bin> .\protoc -I . --pyi_out=. simple.proto
-PS C:\Users\Soma\OneDrive\Villamosmérnök\Projektek\PCB_design_project\nanopb-0.4.8-windows-x86\nanopb-0.4.8-windows-x86\generator-bin> .\protoc --nanopb_out=. simple.proto
-PS C:\Users\Soma\OneDrive\Villamosmérnök\Projektek\PCB_design_project\nanopb-0.4.8-windows-x86\nanopb-0.4.8-windows-x86\generator-bin> .\protoc -I . --python_out=. simple.proto
-PS C:\Users\Soma\OneDrive\Villamosmérnök\Projektek\PCB_design_project\nanopb-0.4.8-windows-x86\nanopb-0.4.8-windows-x86\generator-bin>
+.\protoc -I . --pyi_out=. simple.proto
+.\protoc --nanopb_out=. simple.proto
+.\protoc -I . --python_out=. simple.proto
