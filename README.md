@@ -58,6 +58,6 @@ The requirements were as follows:
 	
 ## Test Results
 
-UART communication and LED control using protobuffers are working correctly, incorrectly formatted messages did not cause any issues. The system remained stable under heavy message loads.
+UART communication and LED control using protobuffers are working correctly. Incorrectly formatted messages did not cause any issues. The system remained stable under heavy message loads.
 
  
