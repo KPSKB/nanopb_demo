@@ -67,3 +67,72 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-03-02 17:30:25.161
 !MESSAGE Indexed 'STM32_protobuf' (30 sources, 100 headers) in 2.69 sec: 9,088 declarations; 66,872 references; 0 unresolved inclusions; 5 syntax errors; 2 unresolved names (0.0026%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-02 17:44:41.776
+!MESSAGE Indexed 'STM32_protobuf' (30 sources, 100 headers) in 3.36 sec: 9,088 declarations; 66,833 references; 0 unresolved inclusions; 5 syntax errors; 2 unresolved names (0.0026%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:46:05.526
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 4 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:46:05.527
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:46:05.530
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 4 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:46:05.531
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:50:30.251
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 5 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:50:30.252
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:50:30.255
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 5 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-03-02 17:50:30.257
+!MESSAGE Existing sessions are:
+!SESSION 2024-03-04 19:18:09.381 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=hu_HU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-04 19:18:20.748
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-04 19:18:20.751
+!MESSAGE Log4j2 initialized with config file C:\Users\Soma\OneDrive\Villamosmernok\Projektek\PCB_design_project\pcb-design-project\STM32_protobuf\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-04 19:18:29.719
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.ui 4 0 2024-03-04 19:19:37.473
+!MESSAGE Error in CDT UI during reconcile
+!STACK 1
+C Model Exception: C Model Status [Element main.c does not exist.]
+	at org.eclipse.cdt.internal.core.model.CElement.newNotPresentException(CElement.java:485)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.makeConsistent(TranslationUnit.java:583)
+	at org.eclipse.cdt.internal.core.model.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:65)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:346)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:613)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:641)
+	at org.eclipse.cdt.internal.core.model.WorkingCopy.reconcile(WorkingCopy.java:365)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:79)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:64)
+	at org.eclipse.cdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.cdt.internal.ui.text.CCompositeReconcilingStrategy.reconcile(CCompositeReconcilingStrategy.java:90)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.cdt.internal.ui.text.CReconciler.process(CReconciler.java:346)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.cdt.core 4 969 2024-03-04 19:19:37.474
+!MESSAGE Element main.c does not exist.
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-04 19:35:01.733
+!MESSAGE Indexed 'STM32_protobuf' (30 sources, 100 headers) in 4.07 sec: 9,087 declarations; 66,889 references; 0 unresolved inclusions; 5 syntax errors; 4 unresolved names (0.0053%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-04 19:37:59.876
+!MESSAGE Indexed 'STM32_protobuf' (30 sources, 100 headers) in 2.99 sec: 9,087 declarations; 66,900 references; 0 unresolved inclusions; 5 syntax errors; 4 unresolved names (0.0053%)

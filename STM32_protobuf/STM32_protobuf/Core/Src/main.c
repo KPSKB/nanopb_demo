@@ -46,7 +46,6 @@
 
 UART_HandleTypeDef huart3;
 
-
 /* USER CODE BEGIN PV */
 
 // Buffer to receive messages
@@ -54,7 +53,7 @@ static uint8_t uartBuffer[2] = {0};
 
 // Message received flag
 #ifndef PROTOBUF_LED_TIME_CRITICAL
-bool uartMsgReceived;
+bool uartMsgReceived = 0;
 #endif
 
 /* USER CODE END PV */
@@ -160,29 +159,28 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-#ifndef PROTOBUF_LED_TIME_CRITICAL
-	// Check if new message received since last cycle
-	if (uartMsgReceived)
-	{
-		// Set yellow led to signal data processing to the user.
-		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-
-		// Process protobuf message
-		if (!processProtobufMsg(uartBuffer))
-		{
-			// Set red led to signal decoding error to the user
-			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-		}
-
-		// Reset flag
-		uartMsgReceived = false;
-
-		// Reset yellow led
-		HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-	}
-#endif
-
     /* USER CODE BEGIN 3 */
+
+#ifndef PROTOBUF_LED_TIME_CRITICAL
+	  if( uartMsgReceived )
+	  {
+			// Set yellow led to signal data processing to the user.
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+
+			if (!processProtobufMsg(uartBuffer))
+			{
+				// Set red led to signal decoding error to the user
+				HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+			}
+
+			// Reset yellow led
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+			// Reset flag
+			uartMsgReceived = false;
+
+	  }
+#endif
 
   }
   /* USER CODE END 3 */
