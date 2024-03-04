@@ -2,8 +2,16 @@
 
 ## Description
 
-This project provides a simple example using nanopb with STM32.
+This project provides a simple example using nanopb with STM32. 
 
+The requirements were as follows:
+
+- Create UART communication on an STM32 Nucleo eval board.
+- Implement two UART commands (STM32 eval board <-> PC) using protobuffers (e.g., LED on/off).
+- Use the nanopb library for protobuffer implementation.
+- Test the STM32 protobuffer with a PC serial terminal or Python script.
+- Perform a flood test: using a PC script, send messages to the STM32 as quickly as possible via UART, ensuring it does not freeze, and if an incorrect message format is sent, there should be no issue with sending the next message.
+  
 ## Project Structure
 
 - **./STM32_protobuf**: This directory contains the STM32CubeIDE project files.
@@ -11,8 +19,6 @@ This project provides a simple example using nanopb with STM32.
 - **./test/script/**: This directory contains the Python test script.
 - **./test/c_app/**: This directory contains a console application to pre-test protobuf source files.
 - **./proto_nanopb**: This directory contains the proto file and the generated protobuf source files.
-
-
 
 ## Prerequisites
 
@@ -49,5 +55,9 @@ This project provides a simple example using nanopb with STM32.
     - Green LED: This can be changed using the proto messages.
     - Yellow LED: Signals that data processing is ongoing.
     - Red LED: Signals possible data loss or error in protobuf decoding.
+	
+## Test Results
+
+UART communication and LED control using protobuffers are working correctly, incorrectly formatted messages did not cause any issues. The system remained stable under heavy message loads.
 
  
