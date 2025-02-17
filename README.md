@@ -1,4 +1,4 @@
-# pcb-design-project
+# nanopb-demo
 
 ## Description
 
